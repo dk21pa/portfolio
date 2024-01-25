@@ -1,0 +1,878 @@
+@charset "UTF-8";
+
+body {
+	width: 1366px;
+	background-color: #ffffff;
+	margin: 0 auto;
+	font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+body header {
+	width: 1366px;
+	height: 828px;
+	height: 826px;
+	background-color: blue;
+	background: no-repeat url(../images/01mainHero.png);
+	margin-bottom: 44px;
+	position: relative;
+}
+
+body header .gNavi {
+	display: none;
+}
+
+body header .mainLogo {
+	margin: 34px 0 0 363px;
+}
+
+body header .sns {
+	margin-left: 103px;
+	margin-top: -120px;
+	display: flex;
+}
+
+body header .sns ul {
+	height: 176px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+body header .sns ul li img {
+	width: 32px;
+	height: 32px;
+	margin: 0;
+}
+
+body header>p:not(.mainLogo) {
+	width: 467px;
+	height: 96px;
+	color: #ffffff;
+	/*margin-top: -50px;*/
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 32px;
+	text-align: justify;
+
+	position: relative;
+	margin-left: auto;
+	margin-right: 103px;
+	bottom: calc(54px + 20px);
+}
+
+/*** add nishi ***/
+body>header>div.panNavi {
+	/* 文字 */
+	font-family: 'Zen Kaku Gothic New', sans-serif;
+	font-size: 20px;
+	line-height: 20px;
+	font-weight: 400;
+	/* 箱 */
+	width: 100%;
+	/*height: 58px;*/
+	padding: calc((58px - 20px) / 2);
+	border-bottom: 1px solid black;
+
+	position: absolute;
+	bottom: 0px;
+	background-color: #fff;
+}
+
+body main {
+	width: 1200px;
+	margin: 0 auto;
+	background-color: #fff;
+}
+
+/** 見出しの設定 **/
+.title {
+	display: flex;
+	justify-content: center;
+	align-items: end;
+	background: no-repeat url(../images/hTagBg_530x96.png);
+	width: 530px;
+	height: 96px;
+
+	margin-bottom: 80px;
+}
+
+.title h2 {
+	font-size: 48px;
+	align-self: flex-end;
+	margin-bottom: 20px;
+}
+
+.title h3 {
+	font-size: 24px;
+	align-self: flex-end;
+	margin-bottom: 24px;
+	margin-left: 10px;
+}
+
+/**/
+/** Attraction **/
+article.Attraction {
+	width: 100%;
+	padding: 20px 0px 0px;
+	/**background-color: purple; /**/
+}
+
+article.Attraction section {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 40px 40px;
+
+	width: 100%;
+	margin: 0px auto;
+	/**background-color: yellow; /**/
+}
+
+article.Attraction section h4 {
+	/* 文字 */
+	font-size: 36px;
+	line-height: 36px;
+	letter-spacing: 0.3em;
+	font-weight: bold;
+	/* 箱 */
+	width: 100%;
+	margin-bottom: -20px;
+}
+
+article.Attraction section>div.picture {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 600px;
+	/**background-color: gray; /**/
+}
+
+article.Attraction section>div.text {
+	width: 500px;
+	padding: 40px 40px;
+	background-color: rgba(100, 201, 155, 0.2);
+
+	display: flex;
+	align-items: center;
+}
+
+article.Attraction section>div.text>p {
+	/* 文字 */
+	/*font-family: 'Zen Kaku Gothic New', sans-serif;*/
+	font-size: 20px;
+	line-height: 32px;
+	letter-spacing: 0em;
+	font-weight: 400;
+	/* 箱 */
+	width: 100%;
+	/**background-color: #aaa; /**/
+}
+
+article.Attraction section:last-of-type>div.text:last-of-type>p:last-of-type {
+	/* 箱 */
+	text-align: center;
+}
+
+article.Attraction section:last-of-type>div.text>p>span:nth-of-type(1) {
+	/* 文字 */
+	line-height: 20px;
+	/* 箱 */
+	display: block;
+	margin-bottom: 40px;
+}
+
+article.Attraction section:last-of-type>div.text>p>span:nth-of-type(2) {
+	/* 文字 */
+	line-height: 20px;
+	font-weight: bold;
+	/* 箱 */
+	display: block;
+}
+
+div.hr {
+	width: 480px;
+	height: 1px;
+	margin: 80px auto;
+	background-color: #000;
+}
+
+/** Gourmet **/
+article.Gourmet {
+	width: 100%;
+	/**background-color: purple; /**/
+}
+
+article.Gourmet>div.title {
+	position: relative;
+	left: 650px;
+}
+
+/* article.Gourmet>section {
+	background-color: blue; 
+} */
+
+article.Gourmet section>p {
+	/* 文字 */
+	font-size: 20px;
+	line-height: 32px;
+	letter-spacing: 0em;
+	font-weight: 400;
+	/* 箱 */
+	width: 420px;
+	padding: 60px 0px;
+	margin-left: 60px;
+	margin-bottom: 80px;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+article.Gourmet div.wrap {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 60px 0px;
+	padding: 60px 60px 80px;
+	/**background-color: blue; /**/
+}
+
+article.Gourmet div.card {
+	width: 510px;
+	/**background-color: #969; /**/
+}
+
+article.Gourmet div.card>div:has(>h4) {
+	width: 100%;
+	margin-bottom: 20px;
+	/**background-color: yellow; /**/
+}
+
+article.Gourmet div.card>div h4 {
+	/* 文字 */
+	font-size: 36px;
+	line-height: 36px;
+	letter-spacing: 0em;
+	font-weight: 400;
+	/* 箱 */
+	display: inline-block;
+	margin-right: 20px;
+}
+
+article.Gourmet div.card>div h5 {
+	/* 文字 */
+	font-size: 24px;
+	line-height: 24px;
+	letter-spacing: 0em;
+	font-weight: 400;
+	/* 箱 */
+	display: inline-block;
+}
+
+article.Gourmet div.card>picture:has(img) {
+	display: block;
+	margin-bottom: 20px;
+}
+
+article.Gourmet div.card>p {
+	/* 文字 */
+	font-size: 20px;
+	line-height: 32px;
+	letter-spacing: 0em;
+	font-weight: 400;
+	text-align: justify;
+	/* 箱 */
+	margin-bottom: 40px;
+}
+
+article.Gourmet div.card>div:has(>button) {
+	width: 100%;
+	text-align: left;
+	padding-bottom: 40px;
+	border-bottom: 1px solid #000;
+}
+
+article.Gourmet div.card>div>button {
+	/* 文字 */
+	font-size: 20px;
+	line-height: 20px;
+	letter-spacing: 0em;
+	font-weight: 400;
+}
+
+article.Gourmet div.card>div>button:hover {
+	text-decoration: underline;
+}
+
+/** モーダルウィンドウ **/
+div.overLay {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #000;
+	opacity: .1;
+	display: none;
+	z-index: 100;
+}
+
+div.modal {
+	width: 675px;
+	height: 675px;
+	background-color: #F4F4F4;
+	display: flex;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%, -50%);
+	z-index: 101;
+}
+
+div.modal div.picture {
+	position: absolute;
+	left: 60px;
+	top: 60px;
+}
+
+div.modal div.mcloseBtn {
+	display: block;
+	width: 36px;
+	height: 36px;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 102;
+	cursor: pointer;
+}
+
+/** Pickup **/
+article.Pickup {
+	padding: 20px;
+	padding-bottom: 0px;
+	/**background-color: purple; /**/
+}
+
+article.Pickup>section>div:has(h4) {
+	margin-left: calc(60px - 20px);
+	margin-bottom: 80px;
+}
+
+article.Pickup>section>div>h4 {
+	/* 文字 */
+	font-size: 36px;
+	line-height: 36px;
+	letter-spacing: 0em;
+	font-weight: 400;
+	/* 箱 */
+	width: 420px;
+	text-align: center;
+	padding: 20px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #000;
+}
+
+article.Pickup>section>div>p {
+	/* 文字 */
+	font-size: 20px;
+	line-height: 32px;
+	letter-spacing: 0em;
+	font-weight: 400;
+	/* 箱 */
+	width: 420px;
+}
+
+article.Pickup>section>div.wrap {
+	width: 100%;
+	padding: 0px 40px;
+	/**background-color: blue; /**/
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 80px 0px;
+}
+
+article.Pickup>section>div.wrap>p {
+	/* 文字 */
+	font-size: 20px;
+	line-height: 32px;
+	letter-spacing: 0em;
+	font-weight: 400;
+	/* 箱 */
+	width: 420px;
+	padding: 74px 0px;
+	display: inline-block;
+	/**background-color: gold; /**/
+}
+
+article.Pickup>section>div.wrap>p>span {
+	display: block;
+}
+
+article.Pickup>section>div.wrap>p:nth-of-type(2) {
+	/* 文字 */
+	font-family: 'Noto Sans JP', sans-serif;
+	font-size: 20px;
+	line-height: 20px;
+	letter-spacing: 0em;
+	font-weight: 400;
+	/* 箱 */
+	text-align: center;
+	width: 100%;
+	padding: 0px;
+}
+
+article.Pickup>section>div.wrap>div:last-of-type {
+	width: 420px;
+	text-align: center;
+	/**background-color: gold; /**/
+}
+
+article.Pickup>section>div.wrap>div:last-of-type>p {
+	/* 文字 */
+	font-size: 20px;
+	line-height: 32px;
+	letter-spacing: 0em;
+	font-weight: 400;
+	text-align: left;
+	/* 箱 */
+	display: inline-block;
+	width: 420px;
+	margin-bottom: 20px;
+}
+
+article.Pickup>section>div.wrap>div:last-of-type>picture:has(>img) {
+	display: inline-block;
+}
+
+@media screen and (max-width: 768px) {
+	body {
+		width: 100vw;
+	}
+
+	body header {
+		width: 100%;
+		height: calc(667px + 32px);
+		background: no-repeat url(../images/sp/01mainHero.png);
+		background-size: cover;
+		background-position: 50% 0%;
+		margin-bottom: 0px;
+	}
+
+	body header .gNavi {
+		display: block;
+		width: 335px;
+		height: auto;
+		padding-top: 4px;
+		margin: 0px 20px 67px;
+		/** background-color: blue; /**/
+	}
+
+	body h1 img {
+		width: 111px;
+		height: auto;
+	}
+
+	body header .gNavi nav ul {
+		display: none;
+	}
+
+	body header .mainLogo {
+		width: 199px;
+		/* margin: 0px 88px; */
+		margin: 0px auto;
+
+		/** background-color: red; /**/
+	}
+
+	body header .mainLogo img {
+		width: 199px;
+		height: auto;
+	}
+
+	body header .sns {
+		margin-left: 20px;
+		margin-top: -32px;
+	}
+
+	body header .sns ul {
+		height: 136px;
+	}
+
+	body header>p:not(.mainLogo) {
+		/* 文字 */
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 19.2px;
+		/* 箱 */
+		width: 247px;
+		height: auto;
+		margin-right: 20px;
+		bottom: 0px;
+
+		/**background-color: gray; /**/
+	}
+
+	body>header>div.panNavi {
+		/* 文字 */
+		font-size: 16px;
+		line-height: 16px;
+		/* 箱 */
+		/*height: 32px;*/
+		padding: 8px 20px;
+	}
+
+	body main {
+		width: 100%;
+		padding: 0px;
+		text-align: center;
+	}
+
+	.title {
+		width: 100%;
+		height: 40px;
+		background-size: contain;
+		padding-bottom: 8px;
+		margin: 0px auto 60px;
+		background-position: center bottom;
+		/**background-color: pink; /**/
+	}
+
+	.title h2 {
+		font-size: 24px;
+		margin-bottom: 0px;
+	}
+
+	.title h3 {
+		font-size: 12px;
+		margin-bottom: 0px;
+	}
+
+	/**/
+	/** Attraction **/
+	article.Attraction {
+		width: 335px;
+		padding: 20px 0px 0px;
+		margin: 0 auto;
+		/**background-color: brown; /**/
+	}
+
+	article.Attraction section {
+		width: 100%;
+		padding: 0px 20px;
+		gap: 20px 0px;
+		/**background-color: yellow; /**/
+	}
+
+	article.Attraction section:first-of-type {
+		margin-top: -20px;
+	}
+
+	article.Attraction section h4 {
+		/* 文字 */
+		font-size: 24px;
+		line-height: 24px;
+		/* 箱 */
+		margin-bottom: 0px;
+	}
+
+	article.Attraction section>div.picture {
+		width: 100%;
+	}
+
+	article.Attraction section>div.picture>picture>img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	article.Attraction section>div.picture>picture:has(img) {
+		width: 295px;
+		height: 221px;
+		overflow: hidden;
+	}
+
+	article.Attraction section>div.picture:nth-of-type(3)>picture:has(img) {
+		width: calc((295px - 20px) / 2);
+		height: 150px;
+		overflow: hidden;
+	}
+
+	article.Attraction section>div.text {
+		/* 箱 */
+		text-align: left;
+		padding: 8px 36px;
+	}
+
+	article.Attraction section>div.text:last-of-type {
+		/* 箱 */
+		padding: 8px 32px;
+	}
+
+	article.Attraction section>div.text>p {
+		/* 文字 */
+		font-size: 12px;
+		line-height: 19.2px;
+		letter-spacing: 0em;
+	}
+
+	article.Attraction section:last-of-type>div.text>p>span:nth-of-type(1) {
+		/* 箱 */
+		margin-bottom: 8px;
+	}
+
+	div.hr {
+		width: 223px;
+		height: 1px;
+		margin: 40px auto;
+	}
+
+	/**/
+	/** Gourmet **/
+	article.Gourmet {
+		width: 335px;
+		margin: 0px auto;
+	}
+
+	article.Gourmet>div.title {
+		position: relative;
+		left: auto;
+	}
+
+	article.Gourmet section>p {
+		/* 文字 */
+		font-size: 12px;
+		line-height: 19.2px;
+		/* 箱 */
+		width: 223px;
+		padding: 12px 0px;
+		margin: 0 auto;
+		margin-bottom: 60px;
+	}
+
+	article.Gourmet div.wrap {
+		width: 100%;
+		gap: 20px 0px;
+		padding: 0px;
+		margin-bottom: 40px;
+		/**background-color: blue; /**/
+	}
+
+	article.Gourmet div.card {
+		width: 335px;
+		margin: 0px calc((100% - 335px) / 2);
+		/**background-color: #969; /**/
+	}
+
+	article.Gourmet div.card>div:has(>h4) {
+		margin-bottom: 8px;
+		/**background-color: yellow; /**/
+	}
+
+	article.Gourmet div.card>div h4 {
+		/* 文字 */
+		font-size: 32px;
+		line-height: 32px;
+		/* 箱 */
+		display: block;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 8px;
+	}
+
+	article.Gourmet div.card>div h5 {
+		/* 文字 */
+		font-size: 16px;
+		line-height: 16px;
+		/* 箱 */
+		display: block;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 8px
+	}
+
+	article.Gourmet div.card>picture>img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	article.Gourmet div.card picture:has(>img) {
+		width: 335px;
+		height: 130px;
+		margin-bottom: 8px;
+		overflow: hidden;
+	}
+
+	article.Gourmet div.card>p {
+		/* 文字 */
+		font-size: 12px;
+		line-height: 19.2px;
+		/* 箱 */
+		width: 223px;
+		margin: 0px auto;
+		margin-bottom: 8px;
+	}
+
+	article.Gourmet div.card>div:has(>button) {
+		width: 223px;
+		margin: 0px auto;
+		text-align: right;
+		padding-bottom: 20px;
+	}
+
+	article.Gourmet div.card>div>button {
+		/* 文字 */
+		font-size: 12px;
+		line-height: 12px;
+	}
+
+	/** モーダルウィンドウ **/
+	div.modal {
+		width: 375px;
+		height: 375px;
+	}
+
+	div.modal div.mcloseBtn {
+		width: 28px;
+		height: 28px;
+		top: 8px;
+		right: 8px;
+	}
+
+	div.mcloseBtn img {
+		width: 100%;
+		height: 100%;
+	}
+
+	div.modal div.picture {
+		left: 46px;
+		top: 46px;
+	}
+
+	div.modal .picture img {
+		width: calc(283px + 10px);
+		height: calc(283px + 10px);
+	}
+
+	/** Pickup **/
+	article.Pickup {
+		width: 335px;
+		margin: 0px auto;
+		padding: 20px 0px 0px;
+	}
+
+	article.Pickup>section>div:has(h4) {
+		width: 223px;
+		margin-left: auto;
+		margin: 0px auto 40px;
+	}
+
+	article.Pickup>section>div>h4 {
+		/* 文字 */
+		font-size: 24px;
+		line-height: 24px;
+		/* 箱 */
+		width: 100%;
+		padding: 0px 3.5px 12px;
+	}
+
+	article.Pickup>section>div>p {
+		/* 文字 */
+		font-size: 12px;
+		line-height: 19.2px;
+		/* 箱 */
+		width: 223px;
+		text-align: left;
+	}
+
+	article.Pickup>section>div.wrap {
+		width: 335px;
+		padding: 0px 0px;
+		margin: 0 auto;
+		margin-bottom: 0px;
+		/**background-color: yellow; /**/
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		gap: 20px 20px;
+	}
+
+	article.Pickup>section>div.wrap picture>img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	article.Pickup>section>div.wrap picture:has(>img) {
+		width: 223px;
+		height: 132px;
+		overflow: hidden;
+	}
+
+	article.Pickup>section>div.wrap>p {
+		/* 文字 */
+		font-size: 12px;
+		line-height: 19.2px;
+		/* 箱 */
+		width: 223px;
+		padding: 0px 0px;
+	}
+
+	article.Pickup>section>div.wrap>p>span {
+		text-align: left;
+	}
+
+	article.Pickup>section>div.wrap>p:nth-of-type(2) {
+		/* 文字 */
+		font-family: 'Noto Sans JP', sans-serif;
+		font-size: 12px;
+		line-height: 19.2px;
+		/* 箱 */
+		width: 223px;
+		padding: 0px;
+		margin-bottom: 0px;
+	}
+
+	article.Pickup>section>div.wrap>picture:has(>img):nth-of-type(2),
+	article.Pickup>section>div.wrap>picture:has(>img):nth-of-type(3) {
+		width: calc((335px - 20px) / 2);
+		height: 81px;
+	}
+
+	article.Pickup>section>div.wrap>p {
+		/* 文字 */
+		font-size: 12px;
+		line-height: 19.2px;
+	}
+
+	article.Pickup>section>div.wrap>picture:has(>img):nth-of-type(4),
+	article.Pickup>section>div.wrap>picture:has(>img):nth-of-type(5),
+	article.Pickup>section>div.wrap>div:last-of-type>picture:has(>img) {
+		width: 175px;
+		height: 122px;
+	}
+
+	article.Pickup>section>div.wrap>div:last-of-type {
+		width: 100%;
+		overflow: visible;
+	}
+
+	article.Pickup>section>div.wrap>div:last-of-type>p {
+		/* 文字 */
+		font-size: 12px;
+		line-height: 19.2px;
+		/* 箱 */
+		width: 223px;
+		/**background-color: blue; /**/
+	}
+}
+
+@media screen and (max-device-width: 768px) {
+
+	article.Gourmet div.card>div>button:hover {
+		text-decoration: inherit;
+	}
+}

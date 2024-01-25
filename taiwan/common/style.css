@@ -1,0 +1,378 @@
+@charset "utf-8";
+
+html {
+	scroll-behavior: smooth;
+}
+
+/*/////// ヘッダーとローディング画面 //////*/
+
+body>div#loadingScreen {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #007ab7;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	display: none;
+}
+
+@keyframes loading {
+	0% {
+		opacity: 1;
+	}
+
+	75% {
+		opacity: 0;
+	}
+
+	90% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+#loadingImage {
+	width: 318px;
+	height: 218px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1001;
+	animation: loading 1s ease-in-out infinite;
+}
+
+.headerArea {
+	height: 94px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.headerArea .gMenu {
+	width: 1160px;
+	margin: 0 auto;
+	position: relative;
+	top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+header>.menuBtn {
+	display: none;
+}
+
+.headerArea .gMenu #logo {
+	height: 54px;
+	width: 133px;
+}
+
+.headerArea .menu {
+	align-self: flex-end;
+	display: flex;
+	gap: 20px;
+}
+
+.headerArea .closeBtn,
+.menu> :nth-child(1) {
+	display: none;
+}
+
+.headerArea .menu li:not(:first-child) {
+	transition-duration: 0.2s;
+}
+
+.headerArea .menu li:not(:first-child):hover {
+	text-decoration: underline;
+}
+
+/*/////// フッター部 //////*/
+footer {
+	height: 489px;
+	background-color: #007AB7;
+	position: relative;
+}
+
+footer div.layoutFlag {
+	text-align: center;
+	padding-top: 40px;
+	margin-bottom: 0 auto 28px;
+}
+
+footer div.layoutNav {
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+
+footer div.layoutNav>nav {
+	width: 332px;
+}
+
+footer div.layoutNav>nav li {
+	/* 文字の設定 */
+	color: #fff;
+	font-family: 'Noto Sans JP', sans-serif;
+	font-size: 20px;
+	line-height: 20px;
+	font-weight: 400;
+	letter-spacing: 0em;
+	/* ボックスの設定 */
+	padding-bottom: 12px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #fff;
+}
+
+footer div.layoutNav>nav li a:hover {
+	color: #333333;
+	font-weight: bold;
+}
+
+footer div.layoutNav>nav li:last-of-type {
+	margin-bottom: 0px;
+}
+
+/* ロゴ */
+footer section.logo {
+	width: 256px;
+	position: absolute;
+	left: calc(50% - 256px / 2);
+}
+
+/* SNS アイコン */
+footer section.sns>ul {
+	display: flex;
+}
+
+footer section.sns>ul a:has(>img) {
+	display: block;
+	width: auto;
+	height: 32px;
+
+	margin: 16px;
+	/* 規約によりアイコンサイズの0.5倍のスペースを取る */
+	margin-bottom: 0px;
+}
+
+footer section.sns>ul a>img {
+	width: auto;
+	height: 32px;
+}
+
+/* コピーライト部分 */
+footer>p {
+	/* 文字の設定 */
+	color: #fff;
+	font-family: 'Noto Sans JP', sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 12px;
+	letter-spacing: 0em;
+	text-align: center;
+
+	/* ボックスの設定 */
+	display: block;
+	width: 100%;
+	height: 52px;
+	padding: 20px;
+	border-top: 1px solid #03A9F4;
+
+	position: absolute;
+	bottom: 0px;
+}
+
+/* /// ページTopへbtn /// */
+div.backToPageTopBtn {
+	width: 100px;
+	height: 100px;
+	position: fixed;
+	right: calc(20px + (100vw - 1366px) / 2);
+	z-index: 10;
+	bottom: -120px;
+	transition: bottom 0.3s ease 0s;
+}
+
+div.backToPageTopBtn img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+@media screen and (max-width: 1366px) {
+	div.backToPageTopBtn {
+		right: 20px;
+	}
+}
+
+@media screen and (max-width:768px) {
+	#loadingScreen img {
+		width: 287px;
+		height: 117px;
+	}
+
+	.headerArea {
+		height: 100vh;
+		width: 225px;
+		position: fixed;
+		top: 0;
+		z-index: 10;
+		background-color: rgba(0, 0, 0, .7);
+		font-size: 20px;
+		right: -225px;
+		transition: right 0.5s ease;
+	}
+
+	/*///////ドロワー作動////////*/
+	#menuBtn:checked~.headerArea {
+		right: 0px;
+	}
+
+	.headerArea .gMenu {
+		width: 100%;
+		top: 0px;
+		flex-direction: column;
+		gap: 84px;
+	}
+
+	.headerArea .gMenu #logo {
+		height: 40px;
+		width: 101px;
+		margin-top: 8px;
+		margin-left: 12px;
+	}
+
+	.headerArea .menuIcon,
+	.headerArea .closeBtn {
+		display: block;
+		width: 48px;
+		height: 48px;
+		top: 4px;
+		right: 4px;
+	}
+
+	.headerArea .closeBtn {
+		position: absolute;
+		background-image: url(/images/01closeButton.svg);
+	}
+
+	.menuIcon {
+		position: fixed;
+		background-image: url(/images/01DrowerButton.svg);
+	}
+
+	.headerArea .menu {
+		flex-direction: column;
+		align-self: center;
+		text-align: center;
+		gap: 20px;
+	}
+
+	.headerArea .menu li:nth-child(1) {
+		display: block;
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
+
+	.headerArea .menu li:nth-child(2),
+	.headerArea .menu li:nth-child(6) {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	footer {
+		height: 349px;
+	}
+
+	footer div.layoutFlag {
+		width: 335px;
+		padding-top: 20px;
+		margin: 0 auto;
+		margin-bottom: 20px;
+	}
+
+	footer div.layoutFlag>img {
+		width: 32px;
+		height: 24px;
+	}
+
+	footer>div.layoutNav {
+		flex-wrap: wrap;
+		justify-content: space-around;
+
+		width: 335px;
+
+		margin: 0 auto 12px;
+	}
+
+	footer div.layoutNav>nav {
+		width: 195px;
+		margin-bottom: calc(40px - 16px - 6px);
+	}
+
+	footer div.layoutNav>nav li {
+		/* 文字の設定 */
+		font-size: 12px;
+		line-height: 12px;
+		/* ボックスの設定 */
+		padding-bottom: 6px;
+		margin-bottom: 12px;
+	}
+
+	/* ロゴ */
+	footer section.logo {
+		width: 71px;
+		height: 28px;
+		left: 0px;
+	}
+
+	footer section.logo>img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	/* SNS アイコン */
+	footer section.sns>ul {
+		display: flex;
+		justify-content: center;
+	}
+
+	/* コピーライト部分 */
+	footer>p {
+		/* 文字の設定 */
+		font-size: 10px;
+		line-height: 10px;
+
+		/* ボックスの設定 */
+		height: 34px;
+		padding: 12px;
+		position: relative;
+	}
+
+	div.backToPageTopBtn {
+		width: 48px;
+		height: 48px;
+	}
+}
+
+@media screen and (max-device-width:768px) {
+	.headerArea .menu li:not(:first-child):hover {
+		text-decoration: inherit;
+	}
+
+	footer div.layoutNav>nav li a:hover {
+		color: white;
+		font-weight: normal;
+	}
+}

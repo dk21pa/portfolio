@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>台湾観光案内</title>
+    <style>
+        body {
+            background-color: #007ab7;
+        }
+
+        header,
+        main,
+        footer {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- JavaScriptでヘッダー部を読み込む -->
+        <img id="bigLogo" src="images/01logo.svg">
+        <span class="snsIcons">
+            <a href="#">
+                <img src="images/snsIcon/snsIconFacebook.svg" alt="フェイスブックのリンク">
+            </a>
+            <a href="#">
+                <img src="images/snsIcon/snsIconInsta.svg" alt="インスタのリンク">
+            </a>
+            <a href="#">
+                <img src="images/snsIcon/snsIconTweeter.svg" alt="Xのリンク">
+            </a>
+        </span>
+    </header>
+    <main>
+        <section id="introduction">
+            <div id='introTop'>
+                <div class="introWrap">
+                    <div>
+                        <img src="images/02flag.svg" alt="台湾国旗">
+                        <h1>Formosa</h1>
+                        <h2>フォルモサ（麗しの島）</h2>
+                    </div>
+                    <img src="images/02intro01.png" alt="フォルモサの画像1">
+                </div>
+            </div>
+            <div id="introBottom">
+                <div class="introWrap">
+                    <div>
+                        <p>フォルモサは、十六世紀にポルトガル人がエメラルド色の美しい台湾を見つけて発した賛嘆の言葉です。
+                            緑にあふれた台湾の美しい風景が、あなたを桃源郷の世界へといざなってくれるでしょう。
+                        </p>
+                    </div>
+                    <img src="images/02intro02.png" alt="フォルモサの画像2">
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="title">
+                <h1>Gallery <span>ギャラリー</span></h1>
+            </div>
+            <div id="slider">
+                <img src="images/03gallery03.png">
+                <img src="images/03gallery04.png">
+                <img src="images/03gallery05.png">
+                <img src="images/03gallery01.png">
+                <img src="images/03gallery02.png">
+                <img src="images/03gallery03.png">
+                <img src="images/03gallery04.png">
+            </div>
+            <div id="sliderIcons">
+                <img class="button" id="leftArrow" src="images/03sliderLeft.svg">
+                <div>
+                    <div class="button"></div>
+                    <div class="button"></div>
+                    <div class="button"></div>
+                    <div class="button"></div>
+                    <div class="button"></div>
+                </div>
+                <img class="button" id="rightArrow" src="images/03sliderRight.svg">
+            </div>
+        </section>
+
+        <section id="travel">
+            <div class="title">
+                <h1>Travel <span>おすすめスポット</span></h1>
+            </div>
+            <div id="travelWrap">
+                <p>
+                    訪れた人々を魅了する「美麗島」台湾。
+                    そんな台湾の人気スポットを代表する地を３つのエリアでご紹介。
+                    様々な風景に誰もが魅了されます。
+                </p>
+                <div>
+                    <img src="images/04map.png" alt="">
+                    <a id="taipei" href="taipei/index.html">
+                        <img src="images/04linkTaipei.png">
+                    </a>
+                    <a id="tainan" href="tainan/index.html">
+                        <img src="images/04linkTainan.png">
+                    </a>
+                    <a id="taichu" href="taichu/index.html">
+                        <img src="images/04linkTaichu.png">
+                    </a>
+                </div>
+            </div>
+            <div id="line"></div>
+        </section>
+        <section id="event">
+            <div class="title">
+                <h1>Event <span>おすすめイベント</span></h1>
+            </div>
+
+            <h2>台湾ランタンフェスティバル</h2>
+            <div class="eventWrap">
+                <img src="images/05event01.png" alt="">
+                <div>
+                    <p class="term">開催期間</p>
+                    <p class="days">春節 旧暦元日（2024年2月24日～3月2日予定）</p>
+                    <p class="description">春節の風習として「天燈」と呼ばれる紙製のランタンに無病息災などの祈りを書き込み、
+                        火種を用いて熱気球と同じ原理で空に飛ばす儀式。吉祥や邪気払いの意味があります。</p>
+                </div>
+            </div>
+            <h2>台北最High新年城<br>カウントダウンパーティー</h2>
+            <div class="eventWrap">
+                <img src="images/05event02.png" alt="">
+                <div>
+                    <p class="term">開催期間</p>
+                    <p class="days">12月31日～1月1日</p>
+                    <p class="description">台北101では毎年、新年を祝う花火を実施。元旦0時から約3分間、台北101を覆い尽くすように、
+                        ビル全体から美しい火花が舞い散ります。世界中から注目されるイベントの一つです。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="info">
+            <div id="infoWrapper">
+                <h3>台湾基本情報</h3>
+                <div>
+                    <ol>
+                        <li>■正式名称：中華民国・台湾<br>Republic of China,Taiwan</li>
+                        <li>■首都：台北</li>
+                        <li>■人口：約2,300万人</li>
+                        <li>■面積：約3万6,000km²</li>
+                        <li>■人種・民族：漢民族、先住民</li>
+                        <li>■宗教：仏教、道教、キリスト教、その他</li>
+                        <li>■言語：北京語、台湾語</li>
+                        <li>■通貨：元（ニュー台湾ドル）</li>
+                        <li>■時差：1時間 台湾が正午のとき、日本は午後1時</li>
+                    </ol>
+                    <ol>
+                        <li>■台湾の気候・服装</li>
+                        <li>■亜熱帯に属し一年を通して温暖な台湾。
+                            しかし北回帰線から南は熱帯で暑く、
+                            北部は大陸性気候の影響を受けて冷え込むこともあるなど、
+                            地域差を頭に入れて服装の準備を</li>
+                        <li>■台湾の祝祭日</li>
+                        <li>■正月：1月1日</li>
+                        <div>
+                            <li>■端午節※：6月22日</li>
+                            <li>■春節※：1月20日～29日</li>
+                            <li>■中秋節※：9月29日</li>
+                            <li>■和平記念日：2月28日</li>
+                            <li>■国慶節：10月10日</li>
+                            <li>■清明節：4月5日</li>
+                        </div>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <!-- JavaScriptでフッターを読み込む -->
+    </footer>
+    <script src="common/jquery-3.7.1.min.js"></script>
+    <script src="common/script.js"></script>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
