@@ -1,0 +1,720 @@
+@charset "UTF-8";
+
+body {
+    width: 1366px;
+    background-color: #ffffff;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    margin: 0 auto;
+}
+
+footer {
+    width: 100%;
+    margin: 0 auto;
+}
+
+header {
+    width: 100%;
+    height: 828px;
+    background: no-repeat url(../images/01mainHero.png);
+    margin: 0 auto;
+}
+
+header .subLogo {
+    display: none;
+}
+
+header .mainLogo {
+    margin-left: 363px;
+}
+
+header .sns {
+    margin-left: 103px;
+    margin-top: -120px;
+    display: flex;
+}
+
+header .sns ul {
+    height: 176px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header .sns ul li img {
+    width: 32px;
+    height: 32px;
+    margin: 0;
+}
+
+header .comment {
+    width: 467px;
+    height: 96px;
+    color: #ffffff;
+    margin: -35px 0 18px 800px;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 32px;
+}
+
+header .pan {
+    width: 1366px;
+    height: 60px;
+    border-bottom: 1px #000000 solid;
+    margin-bottom: 20px;
+}
+
+header .pan ol {
+    width: 1200px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    margin-left: 103px;
+}
+
+header .pan ol li a,
+header .pan ol p {
+    font-size: 20px;
+}
+
+main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+main .attraction,
+main .nightMarket,
+main .access {
+    width: 1160px;
+    margin: 0 auto;
+}
+
+main .title {
+    display: flex;
+    justify-content: center;
+    background: no-repeat url(../images/hTagBg_530x96.png);
+    width: 530px;
+    height: 96px;
+    margin: 20px 0 80px 0;
+}
+
+main .title h2 {
+    font-size: 48px;
+    align-self: flex-end;
+    margin-bottom: 20px;
+}
+
+main .title p {
+    font-size: 24px;
+    align-self: flex-end;
+    margin-bottom: 22px;
+    margin-left: 10px;
+}
+
+main .attraction h3 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+main .attraction .big {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+main .attraction .big p,
+main .attraction .small p {
+    background-color: rgba(108, 186, 216, 0.2);
+    width: 500px;
+    font-size: 19px;
+    line-height: 32px;
+    padding: 20px 40px;
+}
+
+main .attraction .small {
+    display: flex;
+    justify-content: space-between;
+}
+
+main .attraction .small>div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+main .attraction .small>div img {
+    width: 290px;
+    height: 167px;
+    object-fit: cover;
+}
+
+main .attraction .small #sub11 {
+    object-position: center -60px;
+}
+
+main .attraction .small #sub12 {
+    object-position: center -140px;
+}
+
+main .attraction .small p {
+    text-align: center;
+    line-height: 3em;
+    font-size: 20px;
+}
+
+main .attraction .small span {
+    font-weight: bold;
+}
+
+main .nightMarket .title {
+    margin-left: 630px;
+}
+
+main .nightMarket section {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+    align-items: center;
+}
+
+main .nightMarket .item1 {
+    width: 420px;
+    height: 264px;
+    margin-bottom: 120px;
+}
+
+main .nightMarket .item1 .line1 {
+    width: 420px;
+    border-top: 1px #000000 solid;
+    margin-bottom: 34px;
+}
+
+main .nightMarket .item1 .line2 {
+    width: 420px;
+    border-bottom: 1px #000000 solid;
+    margin-top: 34px;
+}
+
+main .nightMarket .item1 p {
+    font-size: 20px;
+    line-height: 32px;
+}
+
+main .nightMarket .item2 {
+    width: 540px;
+    height: 264px;
+    margin-bottom: 120px;
+}
+
+main .nightMarket .item3 {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+}
+
+main .nightMarket .item3 button {
+    width: 210px;
+    height: 90px;
+    background: no-repeat url(../images/03BtnFrame.png);
+    margin: 0 20px 40px;
+    text-align: center;
+    line-height: 90px;
+    font-size: 18px;
+    font-weight: bold;
+    transition-duration: .2s;
+}
+
+main .nightMarket .item3 button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+
+main .nightMarket .item4 {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
+
+main .nightMarket .overLay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity: .1;
+    display: none;
+    z-index: 100;
+}
+
+main .nightMarket .modal {
+    width: 1366px;
+    height: 608px;
+    background-color: #007ab7;
+    display: none;
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0 103px;
+    z-index: 101;
+}
+
+main .nightMarket .modal h3 {
+    margin-top: 40px;
+    font-size: 36px;
+}
+
+main .nightMarket .modal .closeBtn {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 102;
+    cursor: pointer;
+}
+
+main .nightMarket .modal .closeBtn img {
+    width: 100%;
+    height: 100%;
+}
+
+main .nightMarket .modal .modalWrap {
+    margin-top: 20px;
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+}
+
+main .nightMarket .modal .modalWrap .description {
+    text-align: center;
+    width: 500px;
+    font-size: 20px;
+}
+
+main .nightMarket .modal .modalWrap .description p {
+    height: 192px;
+    line-height: 32px;
+    text-align: justify;
+}
+
+main .nightMarket .modal .modalWrap .description ol li {
+    margin-top: 12px;
+
+}
+
+main .access .variousPlaces {
+    width: 530px;
+}
+
+main .access .variousPlaces p {
+    width: 384px;
+    height: 24px;
+    margin: 0 auto;
+    font-size: 24px;
+    line-height: 24px;
+}
+
+main .access .variousPlaces .line {
+    width: 420px;
+    border-top: 1px #000000 solid;
+    margin-top: 40px;
+}
+
+main .access .image {
+    margin-bottom: 100px;
+}
+
+main .access section {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+main .access section div {
+    width: 480px;
+    height: 406px;
+}
+
+main .access section div h4 {
+    font-size: 24px;
+    line-height: 24px;
+    margin: 40px 0 30px 0;
+    text-align: center;
+}
+
+main .access section div h4 span {
+    font-weight: bold;
+}
+
+main .access section div p {
+    width: 400px;
+    font-size: 24px;
+    line-height: 38.4px;
+    margin: 0 auto;
+}
+
+main .access .yuyu {
+    margin: 0 0 80px 750px;
+}
+
+.line {
+    width: 480px;
+    border-top: 1px #000000 solid;
+    margin: 80px auto;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        width: 100vw;
+    }
+
+    header {
+        height: 667px;
+        padding-top: 120px;
+        background: no-repeat url(../images/01mainHeroSp.png);
+        background-position: center;
+        background-size: cover;
+    }
+
+    header .subLogo {
+        display: block;
+        position: absolute;
+        height: 45px;
+        width: 111px;
+        top: 3px;
+        left: 20px;
+    }
+
+    header .subLogo img {
+        height: 100%;
+        width: 100%;
+    }
+
+    header .mainLogo {
+        margin: 0;
+        text-align: center;
+    }
+
+    header .mainLogo img {
+        width: 199px;
+        height: 372px;
+    }
+
+    header .sns {
+        margin-left: 23px;
+        margin-top: -25px;
+    }
+
+    header .sns ul {
+        height: 136px;
+    }
+
+    header .comment {
+        width: 247px;
+        height: 57.6px;
+        margin: 0 0 0 120px;
+        font-size: 12px;
+        line-height: 19.2px;
+    }
+
+    header .pan {
+        width: 100vw;
+        height: 32px;
+        margin: 0;
+    }
+
+    header .pan ol {
+        width: 352px;
+        height: 32px;
+        margin-left: 23px;
+    }
+
+    header .pan ol li a,
+    header .pan ol p {
+        font-size: 16px;
+    }
+
+    main {
+        width: 375px;
+    }
+
+    main .attraction,
+    main .nightMarket,
+    main .access {
+        width: 375px;
+    }
+
+    main .title {
+        background: no-repeat url(../images/hTagBg_530x96.png);
+        background-size: cover;
+        width: 220px;
+        height: 40px;
+        margin: 40px auto;
+    }
+
+    main .title h2 {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+    main .title p {
+        font-size: 12px;
+        margin-bottom: 7px;
+        margin-left: 5px;
+    }
+
+    main .attraction h3 {
+        font-size: 23px;
+        text-align: center;
+    }
+
+    main .attraction .big {
+        display: block;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    main .attraction .big img {
+        width: 295px;
+        height: 221px;
+        margin-bottom: 20px;
+    }
+
+    main .attraction .big p {
+        display: inline-block;
+        width: 295px;
+        font-size: 12px;
+        line-height: 19.2px;
+        padding: 10px 36px;
+        text-align: left;
+    }
+
+    main .attraction .small {
+        display: block;
+        text-align: center;
+    }
+
+    main .attraction .small>div {
+        margin-bottom: 20px;
+    }
+
+    main .attraction .small div img {
+        width: 137.5px;
+        height: 225px;
+    }
+
+    main .attraction .small #sub11 {
+        object-position: inherit;
+    }
+
+    main .attraction .small #sub12 {
+        object-position: inherit;
+    }
+
+    main .attraction .small p {
+        display: inline-block;
+        width: 295px;
+        line-height: 1.5em;
+        font-size: 12px;
+        padding: 10px 10px;
+    }
+
+    main .nightMarket .title {
+        margin: 0 auto;
+    }
+
+    main .nightMarket section {
+        display: block;
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    main .nightMarket .item1 {
+        width: 375px;
+        height: 134.4px;
+        margin-bottom: 60px;
+    }
+
+    main .nightMarket .item1 .line1 {
+        width: 222px;
+        margin: 0 auto 12px;
+    }
+
+    main .nightMarket .item1 .line2 {
+        width: 222px;
+        margin: 12px auto 0;
+    }
+
+    main .nightMarket .item1 p {
+        display: inline-block;
+        width: 222px;
+        height: 134.4px;
+        font-size: 12px;
+        line-height: 19.2px;
+        text-align: left;
+    }
+
+    main .nightMarket .item2 {
+        width: 375px;
+        height: 122px;
+        margin: 0 0 4px 0;
+    }
+
+    main .nightMarket .item2 img {
+        width: 183px;
+        height: 122px;
+    }
+
+    main .nightMarket .item3 {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        margin-bottom: 4px;
+        padding: 0 20px;
+    }
+
+    main .nightMarket .item3 button {
+        width: 131.5px;
+        height: 56px;
+        background-size: cover;
+        line-height: 56px;
+        font-size: 12px;
+        margin: 16px;
+    }
+
+    main .nightMarket .item4 {
+        grid-row: 0;
+        grid-column: 0;
+    }
+
+    main .nightMarket .item4 img {
+        width: 183px;
+        height: 122px;
+    }
+
+    main .nightMarket .modal {
+        width: 375px;
+        height: 667px;
+        padding: 0;
+    }
+
+    main .nightMarket .modal h3 {
+        margin-top: 40px;
+        font-size: 24px;
+    }
+
+    main .nightMarket .modal .closeBtn {
+        width: 28px;
+        height: 28px;
+        top: 8px;
+        right: 8px;
+    }
+
+    main .nightMarket .modal .modalWrap {
+        margin-top: 32px;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    main .nightMarket .modal .modalWrap .picture img {
+        width: 335px;
+        height: 223px;
+    }
+
+    main .nightMarket .modal .modalWrap .description {
+        width: 303px;
+        font-size: 12px;
+    }
+
+    main .nightMarket .modal .modalWrap .description p {
+        height: auto;
+        line-height: 19.2px;
+        margin-bottom: 20px;
+    }
+
+    main .nightMarket .modal .modalWrap .description ol li {
+        margin-top: 7.2px;
+    }
+
+    main .access .variousPlaces {
+        width: 375px;
+    }
+
+    main .access .variousPlaces p {
+        width: 192px;
+        height: 12px;
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    main .access .variousPlaces .line {
+        width: 223px;
+        margin-top: 20px;
+    }
+
+    main .access .image {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    main .access .image img {
+        width: 335px;
+        height: 135px;
+    }
+
+    main .access section {
+        display: block;
+        width: 375px;
+        margin: 0 auto;
+    }
+
+    main .access section div {
+        width: 375px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    main .access section div h4 {
+        font-size: 12px;
+        line-height: 12px;
+        margin: 20px 0 15px 0;
+    }
+
+    main .access section div p {
+        width: 225px;
+        font-size: 12px;
+        line-height: 19.2px;
+    }
+
+    main .access .yuyu {
+        margin: 0;
+        margin-bottom: 60px;
+        text-align: center;
+    }
+
+    main .access .yuyu img {
+        width: 95px;
+        height: 61px;
+    }
+
+    .line {
+        width: 223px;
+        margin: 40px auto;
+    }
+}
+
+@media screen and (max-device-width: 768px) {
+    main .nightMarket .item3 button:hover {
+        background-color: inherit;
+        color: black;
+    }
+}
