@@ -1,0 +1,604 @@
+@charset "utf-8";
+
+main>div {
+    height: 36px;
+    padding-left: 103px;
+    display: flex;
+    align-items: center;
+}
+
+#cart {
+    padding: 0 163px;
+}
+
+#cart .confirm {
+    width: 1040px;
+    height: 240px;
+    margin: 80px auto;
+    text-align: center;
+    border: 1px solid #FFD233;
+    font-size: 24px;
+}
+
+#cart .confirm div:first-child {
+    margin: 40px 0 20px;
+}
+
+#cart .confirm div:nth-child(2) {
+    margin-bottom: 40px;
+}
+
+#cart .confirm div:nth-child(2) span {
+    color: #BF0000;
+}
+
+#cart .confirm a {
+    display: inline-block;
+    color: #FFFFFF;
+    background-color: #BF0000;
+    font-size: 20px;
+    font-weight: bold;
+    width: 260px;
+    height: 52px;
+    padding: 12px;
+}
+
+#cart .item {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+#cart .item img {
+    width: 335px;
+    height: 335px;
+}
+
+#cart .item>div {
+    width: 665px;
+    height: 316px;
+    border-bottom: 1px solid #E6CCB2;
+}
+
+#cart .item>div h3 {
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 1px solid #E6CCB2;
+    margin-bottom: 20px;
+}
+
+#cart .item>div form:nth-of-type(1)>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+#cart .item>div form:nth-of-type(1) .price {
+    color: #BF0000;
+}
+
+#cart .item>div form:nth-of-type(1)>div input {
+    height: 52px;
+    width: 80px;
+    border: 1px solid #7F5539;
+    text-align: right;
+    padding-right: 8px;
+    padding-bottom: 4px;
+}
+
+#cart .item .reCalc {
+    display: block;
+    width: 160px;
+    height: 36px;
+    background-color: #CCCCCC;
+    text-align: center;
+    font-size: 20px;
+    color: #000000;
+    margin-left: 510px;
+    margin-bottom: 100px;
+}
+
+#cart .item .delete {
+    font-size: 20px;
+    text-decoration: underline;
+    color: #000000;
+    float: right;
+}
+
+#cart>a {
+    display: block;
+    width: 260px;
+    height: 52px;
+    color: #FFFFFF;
+    padding: 14px;
+    margin: 0 auto 136px;
+    background-color: #7F5539;
+    text-align: center;
+    font-size: 20px;
+}
+
+#cart>p {
+    text-align: center;
+    margin: 200px auto;
+    font-size: 24px;
+}
+
+#login,
+#purchase,
+#card,
+#resist {
+    text-align: center;
+    padding: 0 320px 160px;
+}
+
+#purchase>p,
+#login>p,
+#card>p,
+#resist>p {
+
+    display: inline-block;
+    height: 52px;
+    margin: 80px auto;
+    text-align: center;
+    border-bottom: 2px solid #FFD233;
+    font-size: 28px;
+    font-weight: bold;
+    color: #000000;
+}
+
+#login>div,
+#purchase>div,
+#card>div,
+#resist>div {
+    margin: 0 auto 40px;
+    border: 2px solid #F7D1CD;
+    text-align: center;
+    font-size: 20px;
+}
+
+form .input {
+    width: 440px;
+    margin: 20px auto 40px;
+}
+
+form .input p {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+form .input input {
+    width: 100%;
+    height: 32px;
+    text-align: left;
+    padding-left: 8px;
+    border: 1px solid #7F5539;
+}
+
+#login form button,
+#purchase form button,
+#card form button,
+#resist form button {
+    background-color: #7F5539;
+    color: #FFFFFF;
+    height: 52px;
+    width: 260px;
+    margin: 20px auto 40px;
+    font-size: 20px;
+}
+
+#login>div>p,
+#purchase>div>p,
+#card>div>p,
+#resist>div>p {
+    font-size: 24px;
+    margin: 40px auto;
+}
+
+#login>a,
+#purchase>a,
+#card>a,
+#resist>a {
+    display: block;
+    text-align: right;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.input span:nth-of-type(1) {
+    color: #FF0000;
+}
+
+.input #pwNote {
+    color: #FF0000;
+    font-size: 12px;
+}
+
+.postcode {
+    text-align: left;
+}
+
+.postcode input:nth-of-type(1) {
+    width: 90px;
+}
+
+.postcode input:nth-of-type(2) {
+    width: 120px;
+}
+
+#resist.confirm .input p:nth-child(2),
+#card.confirm .input p:nth-child(2),
+#card.confirm .input p:nth-child(3) {
+    height: 32px;
+    border-left: 2px solid #7F5539;
+    padding: 4px 8px;
+    color: #000000;
+}
+
+#card .caution {
+    margin: 40px;
+    color: #FF0000;
+    text-align: justify;
+}
+
+#card #brand {
+    text-align: left;
+}
+
+#card #brand input {
+    appearance: none;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: relative;
+    bottom: 2px;
+}
+
+#card #brand input[type="radio"]:checked {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+#card .input#brand label {
+    margin-right: 20px;
+    margin-left: 4px;
+}
+
+#card #expiration {
+    text-align: left;
+}
+
+#card #expiration input {
+    width: 80px;
+    margin-right: 16px;
+}
+
+#card #expiration input:nth-of-type(1) {
+    margin-bottom: 16px;
+}
+
+#card #expiration>span:nth-of-type(1) {
+    position: relative;
+    top: -5px;
+    color: #7F5539;
+}
+
+#purchase form p {
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+
+#purchase .item {
+    width: 520px;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 20px;
+    border-top: 2px solid #F7D1CD;
+    border-bottom: 2px solid #F7D1CD;
+    margin-bottom: 32px;
+    padding-top: 12px;
+}
+
+#purchase .item>div {
+    margin-bottom: 12px;
+}
+
+#purchase .item div span {
+    display: inline-block;
+    padding: 4px 12px;
+}
+
+#purchase .item span:nth-child(1) {
+    width: 120px;
+}
+
+#purchase .item span:nth-child(2) {
+    color: #000000;
+    border-left: 2px solid #F7D1CD;
+}
+
+#purchase .last {
+    text-align: center;
+    color: #000000;
+}
+
+#purchase .last input {
+    border: 1px solid #000000;
+    width: 120px;
+}
+
+#purchase .sum {
+    font-weight: bold;
+}
+
+/*///////////////////////////////////////
+
+        以下、画面幅768px以下のCSS 
+
+///////////////////////////////////////*/
+@media screen and (max-width:768px) {
+    main>div {
+        padding-left: 20px;
+    }
+
+    #cart {
+        padding: 20px;
+        font-size: 16px;
+    }
+
+    #cart .confirm {
+        min-width: 300px;
+        width: calc(100vw - 40px);
+        max-width: 560px;
+        height: 148px;
+        margin: 20px auto;
+        font-size: 16px;
+    }
+
+    #cart .confirm div:first-child {
+        margin: 20px auto;
+    }
+
+    #cart .confirm div:nth-child(2) {
+        margin-bottom: 20px;
+    }
+
+    #cart .confirm a {
+        width: 148px;
+        height: 36px;
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    #cart .item {
+        display: block;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    #cart .item img {
+        max-width: 500px;
+        width: calc(100vw - 40px);
+        height: auto;
+    }
+
+    #cart .item>div {
+        width: 100%;
+        border: none;
+        height: auto;
+    }
+
+    #cart .item>div h3 {
+        width: 100%;
+        height: auto;
+        margin: 20px;
+        font-size: 16px;
+        border: none;
+    }
+
+
+    #cart .item>div form:nth-of-type(1)>div {
+        height: auto;
+        flex-direction: column;
+        justify-content: inherit;
+        align-items: center;
+        gap: 12px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    #cart .item>div form:nth-of-type(1)>div input {
+        height: 24px;
+        width: 56px;
+        padding-right: 8px;
+        padding-bottom: 2px;
+    }
+
+    #cart .item .reCalc {
+        margin: 0 auto 20px;
+        width: 140px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    #cart .item .delete {
+        font-size: 12px;
+        float: inherit;
+    }
+
+    #cart>a {
+        width: 148px;
+        height: 36px;
+        padding: 10px;
+        font-size: 12px;
+        margin-top: 40px;
+        margin-bottom: 60px;
+    }
+
+    #cart>p {
+        margin: 60px auto;
+        font-size: 16px;
+    }
+
+    #login,
+    #purchase,
+    #card,
+    #resist {
+        padding: 0 40px 80px;
+        font-size: 16px;
+    }
+
+    #purchase>p,
+    #login>p,
+    #card>p,
+    #resist>p {
+        height: 44px;
+        margin: 20px auto;
+        font-size: 20px;
+        padding: 12px 0;
+    }
+
+    #login>div,
+    #purchase>div,
+    #card>div,
+    #resist>div {
+        font-size: 12px;
+        padding: 12px;
+        margin-bottom: 20px;
+    }
+
+    form .input {
+        width: auto;
+        margin: 20px auto;
+    }
+
+    form .input p {
+        margin-bottom: 8px;
+        text-align: left;
+    }
+
+    form .input input {
+        height: 20px;
+        padding-left: 4px;
+    }
+
+    #login form button,
+    #purchase form button,
+    #card form button,
+    #resist form button {
+        height: 48px;
+        width: 160px;
+        margin: 20px auto;
+        font-size: 16px;
+    }
+
+    #login>div>p,
+    #purchase>div>p,
+    #card>div>p,
+    #resist>div>p {
+        font-size: 12px;
+        margin: 20px auto;
+    }
+
+    #login>a,
+    #purchase>a,
+    #card>a,
+    #resist>a {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+
+    .input #pwNote {
+        font-size: 8px;
+    }
+
+    .postcode input:nth-of-type(1) {
+        width: 60px;
+    }
+
+    .postcode input:nth-of-type(2) {
+        width: 100px;
+    }
+
+    #resist.confirm .input p:nth-child(2),
+    #card.confirm .input p:nth-child(2),
+    #card.confirm .input p:nth-child(3) {
+        height: 20px;
+        padding: 2px 8px;
+    }
+
+    #card .caution {
+        margin: 20px;
+        font-size: 16px;
+    }
+
+    #card #brand input {
+        width: 12px;
+        height: 12px;
+        bottom: 2px;
+    }
+
+    #card .input#brand label {
+        margin-right: 30px;
+        margin-left: 4px;
+        font-size: 12px;
+    }
+
+    #card #expiration input {
+        width: 60px;
+        margin-right: 12px;
+    }
+
+    #card #expiration input:nth-of-type(1) {
+        margin-bottom: 8px;
+    }
+
+    #card #expiration>span:nth-of-type(1) {
+        top: -3px;
+    }
+
+    #purchase {
+        padding: 0 20px 60px;
+    }
+
+    #purchase>p {
+        margin-bottom: 60px;
+    }
+
+    #purchase form #note {
+        font-size: 12px;
+    }
+
+    #purchase form p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    #purchase .item {
+        width: calc(100vw - 40px);
+        font-size: 12px;
+        margin-bottom: 20px;
+        padding-top: 8px;
+    }
+
+    #purchase .item>div {
+        margin-bottom: 8px;
+    }
+
+    #purchase .item div span {
+        padding: 4px 0;
+        padding-left: 4px;
+    }
+
+    #purchase .item span:nth-child(1) {
+        width: 60px;
+    }
+
+    #purchase .item span:nth-child(2) {
+        padding-left: 12px;
+    }
+}

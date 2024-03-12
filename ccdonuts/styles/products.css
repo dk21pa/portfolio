@@ -1,0 +1,265 @@
+@charset "utf-8";
+
+main>div {
+    height: 36px;
+    padding-left: 103px;
+    display: flex;
+    align-items: center;
+}
+
+#list {
+    padding-top: 80px;
+    text-align: center;
+}
+
+#list h2 {
+    font-size: 32px;
+    border-bottom: 2px solid #ffd233;
+    width: 224px;
+    height: 72px;
+    margin: 0 auto 160px;
+    padding: 20px 0;
+}
+
+#list h3 {
+    font-size: 24px;
+    margin: 40px auto 120px;
+}
+
+#detail {
+    padding: 80px 163px 0;
+    display: flex;
+    justify-content: space-between;
+    height: 772px;
+    position: relative;
+}
+
+#detail>a {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#detail>a:first-child {
+    left: 50px;
+}
+
+#detail>a:last-child {
+    right: 50px;
+}
+
+#detail .arrow {
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+}
+
+#detail .left {
+    border-right: 50px solid #B392AC;
+}
+
+#detail .right {
+    border-left: 50px solid #B392AC;
+}
+
+
+#detail>img {
+    width: 540px;
+    height: 540px;
+}
+
+#detail>div {
+    width: 460px;
+}
+
+#detail>div h3 {
+    border-bottom: 1px solid #e6ccb2;
+    height: 48px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+#detail>div p {
+    height: 308px;
+    width: 435px;
+    text-align: justify;
+    line-height: 38.4px;
+    font-size: 24px;
+    border-bottom: 1px solid #e6ccb2;
+    margin-bottom: 40px;
+}
+
+#detail>div .price {
+    font-size: 24px;
+    color: #BF0000;
+    margin-bottom: 40px;
+}
+
+#detail>div div:last-child {
+    display: flex;
+    align-items: flex-end;
+    height: 52px;
+    font-size: 24px;
+}
+
+#detail>div div:last-child input {
+    width: 80px;
+    height: 100%;
+    margin: 0 20px 0 4px;
+    padding-right: 8px;
+    border: 1px solid #7F5539;
+    text-align: right;
+
+}
+
+#detail>div div:last-child button {
+    background-color: #7F5539;
+    color: #ffffff;
+    text-align: center;
+    width: 260px;
+    height: 100%;
+    font-size: 20px;
+    padding: 10px 0;
+    margin: 0 8px 0 20px;
+}
+
+#detail>div div:last-child div {
+    height: 100%;
+    width: 52px;
+    background-image: url(../images/favorite.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid #7F5539;
+}
+
+/*///////////////////////////////////////
+
+        以下、画面幅768px以下のCSS 
+
+///////////////////////////////////////*/
+@media screen and (max-width:768px) {
+
+    #list {
+        padding-top: 20px;
+    }
+
+    #list h2 {
+        font-size: 20px;
+        width: 80px;
+        height: 44px;
+        margin: 0 auto 20px;
+        padding: 8px 0;
+    }
+
+    #list h3 {
+        font-size: 20px;
+        margin: 40px auto 80px;
+    }
+
+    #detail {
+        padding: 20px;
+        display: block;
+        text-align: center;
+        height: auto;
+        font-size: 16px;
+    }
+
+    #detail>a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(20, 20, 20, 0.5);
+        top: 20px;
+        transform: translateY(0);
+    }
+
+    #detail>a:first-child {
+        left: 20px;
+    }
+
+    #detail>a:last-child {
+        right: 20px;
+    }
+
+    #detail .arrow {
+        border-top: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+    }
+
+    #detail .left {
+        border-right: 20px solid #EDE0D4;
+        transform: translateX(-3px);
+    }
+
+    #detail .right {
+        border-left: 20px solid #EDE0D4;
+        transform: translateX(3px);
+    }
+
+    #detail>img {
+        max-width: 540px;
+        width: calc(100vw - 40px);
+        min-width: 150px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    #detail>div {
+        max-width: 540px;
+        width: calc(100vw - 40px);
+        min-width: 150px;
+        margin: 0 auto 80px;
+    }
+
+    #detail>div h3 {
+        text-align: left;
+        height: 36px;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    #detail>div p {
+        width: 100%;
+        height: auto;
+        font-size: 16px;
+        line-height: 25.6px;
+    }
+
+    #detail>div .price {
+        font-size: 16px;
+        text-align: left;
+    }
+
+    #detail>div div:last-child {
+        height: 36px;
+        font-size: 16px;
+        margin: 0 auto;
+    }
+
+    #detail>div div:last-child input {
+        width: 56px;
+        height: 100%;
+        margin: 0 4px 0 0;
+        padding-right: 8px;
+        border: 1px solid #7F5539;
+        text-align: right;
+
+    }
+
+    #detail>div div:last-child button {
+        width: 160px;
+        font-size: 12px;
+        padding: 4px 0;
+        margin: 0 8px 0 20px;
+    }
+
+    #detail>div div:last-child div {
+        background-size: 80%;
+        width: 36px;
+        background-size: 70% 70%;
+        margin: 0;
+    }
+}
