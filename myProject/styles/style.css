@@ -1,0 +1,812 @@
+@charset "UTF-8";
+
+:root {
+	--subColor: rgb(222, 222, 231);
+	--leaf: #6FFF66;
+	--fruit: #ffff44;
+}
+
+/* 共通スタイル */
+body {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 0 30px 0 80px;
+	background-color: #fff;
+	background-image: url(/myProject/image/pineapple.png);
+	background-size: 70px 70px;
+	background-repeat: repeat-y;
+	font-size: 20px;
+	font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+}
+
+a {
+	display: inline-block;
+	padding: 4px 8px;
+	margin: 4px 8px;
+	border-radius: 8px;
+	background-color: var(--subColor);
+}
+
+a:hover {
+	font-weight: bold;
+}
+
+hr {
+	margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="password"] {
+	padding: 0 4px;
+	border: 1px solid #333;
+	border-radius: 6px;
+}
+
+input[type='submit'] {
+	padding: 6px 4px 4px;
+	background-color: var(--subColor);
+	border: 1px solid #333;
+	border-radius: 6px;
+}
+
+p {
+	margin-bottom: 5px;
+}
+
+th,
+td {
+	padding: 5px;
+}
+
+/* メニュー */
+#menu {
+	width: 100%;
+	margin: 0 auto;
+	padding: 8px;
+	background-color: var(--leaf);
+}
+
+/* トップページ */
+h1 {
+	font-size: 32px;
+	margin-bottom: 40px;
+	margin-left: 20px;
+}
+
+#introduction {
+	margin: 0 auto;
+	margin-left: 20px;
+}
+
+#introduction h2 {
+	font-size: 24px;
+}
+
+#introduction li {
+	margin: 8px 40px;
+}
+
+#introduction div {
+	margin: 40px 0;
+	line-height: 32px;
+}
+
+/* ログインページ */
+#loginTitle {
+	margin: 20px 0 40px;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.container {
+	margin: 20px auto;
+}
+
+.container br {
+	display: none;
+}
+
+/* マイページ */
+#profile {
+	padding: 20px;
+	display: flex;
+	overflow: hidden;
+	align-items: flex-start;
+	gap: 40px;
+	border: 1px solid #333;
+	border-radius: 10px;
+	background-color: aliceblue;
+}
+
+#profile .icon #profileImage {
+	position: relative;
+	overflow: hidden;
+	width: 120px;
+	height: 120px;
+	border: 1px solid #777;
+}
+
+#profile .icon img {
+	position: absolute;
+	top: 100%;
+	left: 100%;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	margin-bottom: 15px;
+	box-shadow: inherit;
+}
+
+#profile .icon p {
+	margin-top: 10px;
+	text-align: center;
+}
+
+#profile .icon .hoverable:hover {
+	transition-duration: 0.2s;
+	transform: translate(-3px, -3px);
+	box-shadow: 3px 3px 3px 0px #555;
+}
+
+#profile .icon .hoverable:hover img {
+	box-shadow: none;
+}
+
+#profile #message {
+	display: block;
+	position: relative;
+	width: 630px;
+	height: 40px;
+	top: 20px;
+	padding: 10px 8px 8px;
+	border-radius: 5px;
+	background-color: var(--subColor);
+}
+
+#message::before {
+	content: "";
+	position: absolute;
+	bottom: 5px;
+	left: -27px;
+	width: 27px;
+	height: 20px;
+	clip-path: polygon(0% 100%, 100% 0%, 100% 70%);
+	background-color: var(--subColor);
+}
+
+#message input {
+	display: block;
+	border: inherit;
+	text-align: left;
+	width: 100%;
+}
+
+#message textarea {
+	display: block;
+	border: inherit;
+	text-align: left;
+	width: 100%;
+	height: 100%;
+	resize: none;
+	overflow: hidden;
+}
+
+#messageBtn {
+	margin-top: 50px;
+	display: none;
+	justify-content: space-evenly;
+
+}
+
+#messageBtn .updateProfile,
+#messageBtn .undoProfile {
+	margin: 0 8px;
+	padding: 6px;
+	border-radius: 4px;
+	background-color: var(--subColor);
+}
+
+#messageBtn .updateProfile:hover,
+#messageBtn .undoProfile:hover {
+	font-weight: bold;
+}
+
+
+#trivia,
+#gameStartBtn,
+.gameDisplay {
+	margin-top: 20px;
+	padding: 10px;
+	border: 1px solid #333;
+	border-radius: 10px;
+	background-color: aliceblue;
+}
+
+.gameDisplay input {
+	background-color: #fff;
+}
+
+.modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-image: repeating-linear-gradient(45deg, #ffffff, #ffffff 20px, #cccccc 20px, #cccccc 40px);
+	border: 1px solid #333;
+	width: 800px;
+	height: 500px;
+	text-align: center;
+	z-index: 10;
+	display: none;
+}
+
+.modal .modalWrapper {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.modalWrapper>div {
+	text-align: center;
+}
+
+.modal #imageContainer {
+	overflow: hidden;
+	width: 300px;
+	height: 300px;
+	transition: 0.2s ease;
+}
+
+.modal .icon img {
+	position: relative;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	object-fit: contain;
+	border: 1px solid #333;
+	margin-bottom: 10px;
+	border: inherit;
+}
+
+.modal>img {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+}
+
+.modal button {
+	display: inline-block;
+	width: auto;
+	background-color: var(--subColor);
+	padding: 8px;
+	border: 1px solid #333;
+	border-radius: 6px;
+}
+
+.modal .icon img {
+	text-align: center;
+	cursor: grab;
+}
+
+.modal .undoProfile:hover {
+	cursor: pointer;
+}
+
+.modal .icon img:active {
+	cursor: grabbing;
+}
+
+.modal #fileBtn {
+	border-radius: 8px;
+	border: 1px solid #333;
+	background-color: var(--subColor);
+	padding: 10px;
+}
+
+.modal #colorPicker {
+	font-size: 16px;
+	width: 100px;
+	height: 40px;
+	cursor: pointer;
+}
+
+.modal #imageFile {
+	display: none;
+}
+
+.modal #radiusSlider {
+	margin-top: 20px;
+	font-size: 20px;
+}
+
+.modal #radiusSlider input::-webkit-slider-runnable-track {
+	height: 3px;
+	background-color: #555;
+	border-radius: 3px;
+	transform: translateY(-2px);
+	margin: 0 4px;
+}
+
+.modal #radiusSlider input::-webkit-slider-thumb {
+	transform: translateY(-7px);
+}
+
+.gameDisplay {
+	display: flex;
+	justify-content: space-evenly;
+	background-color: aliceblue;
+	margin-bottom: 80px;
+}
+
+#game {
+	max-width: 350px;
+	width: calc(100% - 20px);
+	min-width: 280px;
+	height: 500px;
+	background-color: #171717;
+	position: relative;
+	overflow: hidden;
+}
+
+#game #score {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	font-size: 16px;
+	color: #fff;
+}
+
+#game .countDown {
+	width: 40px;
+	height: 40px;
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 40px;
+	color: #eee;
+	transition: opacity 0.9s ease;
+}
+
+#game .bullet {
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	background-color: #fff;
+	border-radius: 50%;
+	transition: opacity 4s ease-in;
+}
+
+#game .laser {
+	position: absolute;
+	height: 3px;
+	width: 100px;
+	top: 200px;
+	left: 200px;
+	border-radius: 3px;
+	background-color: red;
+	transition: opacity 4s ease-in;
+}
+
+#game .caution {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: 200px;
+	left: 200px;
+	border-radius: 50%;
+	border: 3px solid rgb(236, 88, 88);
+	transform: scale(0);
+	animation: caution linear;
+}
+
+@keyframes caution {
+	0% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(0);
+	}
+}
+
+#newGame {
+	margin: 20px auto;
+	padding: 10px;
+	background-color: var(--subColor);
+	border-radius: 6px;
+}
+
+#ranking th {
+	text-align: center;
+}
+
+#ranking .newRecord {
+	color: red;
+	font-weight: bold;
+}
+
+#overLay {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0.5;
+	z-index: 9;
+	display: none;
+}
+
+.loading {
+	border: 3px solid rgba(0, 0, 0, 0.3);
+	border-radius: 50%;
+	border-top: 3px solid #007bff;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 50px;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* ユーザー登録ページ */
+#userResist {
+	margin: 40px 0 0;
+}
+
+#userResist br {
+	display: none;
+}
+
+#userResist>div {
+	height: 60px;
+}
+
+#userResist>div span {
+	display: inline-block;
+}
+
+#userResist>div span:nth-child(1) {
+	width: 200px;
+}
+
+#userResist>div span:nth-child(2) {
+	margin-right: 20px;
+}
+
+#userEdit {
+	margin: 40px 0;
+}
+
+#userEdit input {
+	max-width: 100%;
+	border-radius: 4px;
+}
+
+#userEdit div span {
+	display: inline-block;
+}
+
+#userEdit div span:nth-child(1),
+#userEdit div span:nth-child(3) {
+	width: 240px;
+}
+
+#userEdit div span:nth-child(2) {
+	width: 30px;
+}
+
+#userEdit .row1 {
+	padding-top: 20px;
+	height: 60px;
+}
+
+#userEdit .row2 {
+	padding-bottom: 20px;
+	border-bottom: 1px solid var(--fruit);
+}
+
+footer {
+	margin-top: 60px;
+	background-color: var(--fruit);
+	color: #333;
+	text-align: center;
+	padding: 10px;
+}
+
+@media screen and (max-width: 786px) {
+
+	/* 共通スタイル */
+	body {
+		width: 100vw;
+		padding: 30px 10px;
+		font-size: 16px;
+		background-image: url(/myProject/image/pineapple.png), url(/myProject/image/pineapple.png);
+		background-size: 30px 30px;
+		background-position: 0 0, 0 100%;
+		background-repeat: repeat-x;
+	}
+
+	a {
+		padding: 2px 4px;
+		margin: 4px 4px;
+		border-radius: 4px;
+	}
+
+	input[type="text"],
+	input[type="password"] {
+		padding: 0 4px;
+		border-radius: 3px;
+	}
+
+	input[type='submit'] {
+		padding: 6px 4px 4px;
+		border-radius: 3px;
+	}
+
+	hr,
+	#menu,
+	footer {
+		width: 100vw;
+		margin-left: -10px;
+	}
+
+	/* トップページ */
+	h1 {
+		font-size: 28px;
+		margin-bottom: 28px;
+	}
+
+	#introduction {
+		margin: 5px;
+	}
+
+	#introduction h2 {
+		font-size: 20px;
+	}
+
+	#introduction li {
+		margin: 4px 0 4px 20px;
+	}
+
+	#introduction div {
+		margin: 28px auto;
+		line-height: 24px;
+	}
+
+	/* ログインページ */
+	#loginTitle {
+		font-size: 24px;
+	}
+
+	.container p {
+		margin: 12px 0;
+	}
+
+	.container br {
+		display: block;
+	}
+
+	/* マイページ */
+	#profile {
+		padding: 12px;
+		gap: 20px;
+		border-radius: 8px;
+	}
+
+	#profile .icon #profileImage {
+		width: 80px;
+		height: 80px;
+	}
+
+	#profile #message {
+		position: relative;
+		z-index: 1;
+		height: 80px;
+		top: 0px;
+		padding: 10px 8px 8px;
+		border-radius: 4px;
+		font-size: 16px;
+		width: 230px;
+	}
+
+	#message::before {
+		z-index: -1;
+		top: 12px;
+		left: -16px;
+		width: 27px;
+		height: 20px;
+	}
+
+	#message textarea {
+		white-space: pre-wrap;
+	}
+
+	#messageBtn {
+		margin-top: 20px;
+		display: none;
+		justify-content: space-evenly;
+
+	}
+
+	#messageBtn .updateProfile,
+	#messageBtn .undoProfile {
+		margin: 0 8px;
+		padding: 6px;
+		border-radius: 4px;
+		background-color: var(--subColor);
+	}
+
+	#messageBtn .updateProfile:hover,
+	#messageBtn .undoProfile:hover {
+		font-weight: bold;
+	}
+
+
+	#trivia,
+	.gameDisplay {
+		margin-top: 20px;
+	}
+
+	.modal {
+		display: none;
+		justify-content: inherit;
+		width: 100vw;
+		height: 90vh;
+		max-width: 800px;
+	}
+
+	.modal .updateProfile {
+		margin: 40px auto;
+		margin-bottom: 0;
+	}
+
+	.modal .modalWrapper {
+		display: block;
+		margin: 40px auto;
+	}
+
+	.modalWrapper>div {
+		text-align: center;
+	}
+
+	.modal #fileBtn {
+		border-radius: 4px;
+	}
+
+	.modal .icon {
+		margin-top: 40px;
+	}
+
+	.modal #imageContainer {
+		width: 200px;
+		height: 200px;
+	}
+
+	.modal>img {
+		top: 5px;
+		right: 5px;
+		width: 40px;
+		height: 40px;
+	}
+
+	.modal button {
+		margin: 20px auto 40px;
+	}
+
+	.modal #radiusSlider {
+		margin-bottom: 20px;
+	}
+
+	.gameDisplay {
+		display: block;
+		text-align: center;
+	}
+
+	#game {
+		width: calc(100% - 20px);
+		margin: 0 auto;
+	}
+
+	#game .countDown {
+		width: 30px;
+		height: 30px;
+		font-size: 30px;
+	}
+
+	#game .bullet {
+		width: 10px;
+		height: 10px;
+	}
+
+	.gameDisplay #ranking {
+		margin: 0 auto;
+	}
+
+	/* ユーザー登録ページ */
+
+	#userResist br {
+		display: block;
+	}
+
+	#userResist>div {
+		height: 72px;
+	}
+
+
+	#userResist>div span:nth-child(1) {
+		width: 140px;
+	}
+
+	#userResist>div span:nth-child(2) {
+		width: 200px;
+		margin-right: 0px;
+		padding: 5px;
+	}
+
+
+	#userEdit {
+		margin: 0 0 40px;
+	}
+
+	#userEdit>div {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 10px;
+	}
+
+
+	#userEdit div span {
+		display: inline-block;
+	}
+
+	#userEdit div span:nth-child(1),
+	#userEdit div span:nth-child(3) {
+		flex-basis: 40%;
+	}
+
+	#userEdit div span:nth-child(2) {
+		width: 20px;
+	}
+
+	#userEdit input {
+		width: 100%;
+	}
+
+	#userEdit .row1:nth-child(1) {
+		margin-top: 32px;
+		border-top: 1px solid var(--fruit);
+	}
+
+	#userEdit .row1 {
+		padding-top: 20px;
+		height: 40px;
+	}
+
+	#userEdit .row2 {
+		padding-bottom: 20px;
+		border-bottom: 1px solid var(--fruit);
+	}
+
+	footer {
+		font-size: 12px;
+	}
+}
