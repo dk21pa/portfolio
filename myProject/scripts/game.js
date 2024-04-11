@@ -1,9 +1,9 @@
 import ajaxToPHP from "./mypage.js";
-import Laser from "./laser.js";
+import { Bullet, Laser, Matter } from "./Enemy.js";
 
-const pi2 = 2 * Math.PI;
-const sin = (a) => Math.sin(a);
-const cos = (a) => Math.cos(a);
+export const pi2 = 2 * Math.PI;
+export const sin = (a) => Math.sin(a);
+export const cos = (a) => Math.cos(a);
 
 const container = document.getElementById("game");
 const scoreElement = document.getElementById('score');
@@ -17,13 +17,12 @@ let heroElement;
 
 let heroX = width / 2;
 let heroY = (height * 3) / 4;
-const bulletSize = 10;
+
 const bulletstartX = width / 2;
 const bulletstartY = height / 4;
-const bulletSpeed = 6;
 let bulletList = [];
 let laserList = [];
-
+let matterList = [];
 let startTime;
 let score = 0;
 let bulletBonus = 0;
@@ -31,37 +30,42 @@ let laserBonus = 0;
 
 let recordNumber;
 let gameover = true;
+let islookMode = false;
 
 //数字をカラーコードに変換
-function getRainbowCode(ratio) {
-    //startから
-    function grad(ratio, start, up = true) {
+export function getRainbowCode(ratio) {
+    const percentage = ratio % 1;
+    function grad(percentage, start, up = true) {
         const sign = up ? -1 : 1;
-        const code = Math.floor(sign * 127 * cos((ratio - start) * 5 / 2 * pi2) + 127);
+        const code = Math.floor(sign * 127.5 * cos((percentage - start) * 3 * pi2) + 127.5);
         return code.toString(16).padStart(2, '0');
     }
-    const percentage = ratio % 1;
+    //赤、紫、青、水色、緑、黄、赤1の順
     let r, g, b;
-    if (percentage < 0.2) {
+    if (percentage < 0.1667) {
         r = 'FF';
-        g = grad(ratio, 0);
-        b = '00';
-    } else if (percentage < 0.4) {
-        r = grad(ratio, 0.2, false);
-        g = 'FF';
-        b = '00';
-    } else if (percentage < 0.6) {
-        r = '00';
-        g = grad(ratio, 0.4, false);
-        b = grad(ratio, 0.4);
-    } else if (percentage < 0.8) {
-        r = grad(ratio, 0.6);
+        g = '00';
+        b = grad(ratio, 0);
+    } else if (percentage < 0.3333) {
+        r = grad(ratio, 0.1667, false);
         g = '00';
         b = 'FF';
+    } else if (percentage < 0.5) {
+        r = '00';
+        g = grad(ratio, 0.3333);
+        b = 'FF';
+    } else if (percentage < 0.6667) {
+        r = '00';
+        g = 'FF';
+        b = grad(ratio, 0.5, false);
+    } else if (percentage < 0.8333) {
+        r = grad(ratio, 0.6667);
+        g = 'FF';
+        b = '00';
     } else {
         r = 'FF';
-        g = '00';
-        b = grad(ratio, 0.8, false);
+        g = grad(ratio, 0.8333, false);
+        b = '00';
     }
     const colorCode = "#" + r + g + b;
     return colorCode;
@@ -73,23 +77,68 @@ async function sleep(duration) {
 };
 
 async function enemyManager() {
-    // await danmaku1();
-    // await danmaku2();
-    await randomLaser(100);
+    await danmaku1();
+    await danmaku2();
     while (!gameover) {
-        // await danmaku3();
+        await randomLaser(100);
+        await danmaku3();
         for (let i = 10; i <= 20; i++) {
             await multiLaser(i);
         }
-        await sleep(1000);
+        await matterBullet();
         await danmaku4();
         await danmaku5();
         danmaku2();
-        await sleep(500);
         await danmaku1();
-        await sleep(500);
+        await sleep(1000);
     }
 };
+
+async function matterBullet() {
+    if (gameover) return;
+    const radius = 50;
+    const vartex = 5
+    const centerX = width / 2;
+    const centerY = height / 4
+    const matter = await createMatter(centerX, centerY, radius, vartex);
+    const rand = Math.random();
+    for (let i = vartex; i <= 10; i++) {
+        matter.setShape(i);
+        matter.setColor(rand + i / 6);
+        await sleep(3000);
+        const shotsPerVartex = 20;
+        for (let j = 0; j < shotsPerVartex; j++) {
+            for (let k = 0; k < i; k++) {
+                if (gameover) return;
+                const x = centerX + radius * cos(matter.angle + pi2 * k / i);
+                const y = centerY + radius * sin(matter.angle + pi2 * k / i);
+                createBullet(x, y, matter.angle + (pi2 * k / i), matter.color);
+            }
+            await sleep(200);
+        }
+        matter.rpm *= 1.1
+    }
+    await sleep(1000);
+    matter.element.style.opacity = 0;
+    await sleep(1000);
+    matter.delete();
+    matterList = [];
+}
+
+async function matterLaser() {
+    if (gameover) return;
+    const radius = 50;
+    const vertex = 5
+    const centerX = width / 2;
+    const centerY = height / 2
+
+    const matter = await createMatter(centerX, centerY, radius, vertex);
+    await sleep(4000);
+    const lasers = matter.shootLaser(container, 400);
+    laserList.push(...lasers);
+    await sleep(3000);
+
+}
 
 //弾が発生する座標を事前にマーキングする
 async function createCaution(x, y, duration = 1500, color = '#e66') {
@@ -108,6 +157,8 @@ async function createCaution(x, y, duration = 1500, color = '#e66') {
 async function multiLaser(laserNum) {
     const promises = [];
     const rand = Math.random();
+    const radius = 50;
+
     for (let i = 0; i < laserNum; i++) {
         if (gameover) return;
         const laser = shootLaser(i);
@@ -116,33 +167,32 @@ async function multiLaser(laserNum) {
     await Promise.all(promises);
 
     async function shootLaser(number) {
-        const radius = 50;
         const centerX = rand * width / 2 + width / 4;
         const centerY = rand * height / 3 + height / 8;
-        const x = centerX + radius * cos(pi2 * (rand + number / laserNum));
-        const y = centerY + radius * sin(pi2 * (rand + number / laserNum))
+        let angle = pi2 * (rand / 2 + number / laserNum);
+        const x = centerX + radius * cos(angle);
+        const y = centerY + radius * sin(angle);
         const color = getRainbowCode(rand);
-        await createCaution(x, y, 500, color);
 
-        let angle = pi2 * (rand + number / laserNum);
-        if (rand < 0.5)
+        await createCaution(x, y, 500, color);
+        if (rand > 0.5)
             angle = Math.atan2(heroY - y, heroX - x) + pi2 * number / laserNum;
 
-        const laser = new Laser(container, x, y, angle, color);
-        laser.speed = 10;
-        laserList.push(laser);
-
-        while (laser.width < 250 && !gameover) {
-            laser.expand();
+        const laser = createLaser(x, y, angle, color);
+        laser.moveSpeed = 10;
+        const targetLength = 250;
+        laser.extend(targetLength);
+        while (laser.length < targetLength && !gameover) {
             await sleep(16);
         }
+        laser.modeList = ['move'];
         while (!gameover && laserList.length > 0) {
-            laser.move(angle);
             await sleep(16);
         }
     }
 }
 
+//ランダムな箇所から自機を狙う。50%で少し外す。
 async function randomLaser(count) {
     for (let i = 0; i < count; i++) {
         if (gameover) return;
@@ -154,22 +204,21 @@ async function randomLaser(count) {
     async function shootLaser() {
         const rand = Math.random();
         const color = getRainbowCode(rand);
+        //発生個所は、12.5% < x < 87.5%、10% < y < 50%
         const x = Math.random() * width * 0.75 + width * 0.125;
         const y = Math.random() * height * 0.4 + height * 0.1;
 
+        //自機からずれる角度の範囲は90°（-45°～45°）;
         const angleRange = pi2 / 4;
-        const a = rand < 0.5 ? 0 : 1;
-        const angle = Math.atan2(heroY - y, heroX - x) + a * (0.5 - rand) * angleRange;
-
-        const laser = new Laser(container, x, y, angle, color);
-        laserList.push(laser);
-
-        while (laser.width < 100 && !gameover) {
-            laser.expand();
+        //50%の確率で自機から外して狙う
+        const zero_or_one = rand < 0.5 ? 0 : 1;
+        const angle = Math.atan2(heroY - y, heroX - x) + zero_or_one * (1.5 - 2 * rand) * angleRange;
+        const laser = createLaser(x, y, angle, color);
+        while (laser.length < 100 && !gameover) {
             await sleep(16);
         }
-        while (laser.element && !gameover) {
-            laser.move();
+        laser.modeList = ['move'];
+        while (laserList.length > 0 && !gameover) {
             await sleep(16);
         }
     }
@@ -184,9 +233,7 @@ async function danmaku1() {
             if (gameover) return;
             const startAngle = Math.atan2(heroY - bulletstartY, heroX - bulletstartX);
             const angle = startAngle + pi2 * j / armCounts;
-            const dx = cos(angle) * bulletSpeed;
-            const dy = sin(angle) * bulletSpeed;
-            createBullet(dx, dy);
+            createBullet(bulletstartX, bulletstartY, angle);
         }
         await sleep(200);
     }
@@ -202,13 +249,10 @@ async function danmaku2(cycles = 3) {
             const armCounts = 14;
             for (let k = 0; k < armCounts; k++) {
                 if (gameover) return;
-                const ratio = k / armCounts;
-                const color = getRainbowCode(ratio + i / cycles);
-
                 const angle = startAngle + pi2 / armCounts * (k + 0.5);
-                const dx = cos(angle) * bulletSpeed;
-                const dy = sin(angle) * bulletSpeed;
-                createBullet(dx, dy, color);
+                const ratio = k / armCounts;
+                const color = getRainbowCode((ratio + i / cycles) % 1);
+                createBullet(bulletstartX, bulletstartY, angle, color);
             }
             await sleep(100);
         }
@@ -217,16 +261,17 @@ async function danmaku2(cycles = 3) {
     await sleep(1000);
 }
 
-//蛇行する回転軌道
+//うねうねする回転軌道
 async function danmaku3() {
     const cycles = 5;
+    //初めは自機を狙う
     const initialAngle = Math.atan2(heroY - bulletstartY, heroX - bulletstartX);
     for (let i = 0; i < cycles; i++) {
         const armLength = 40;
         const steps = cycles * armLength;
         for (let j = 0; j < armLength; j++) {
             const armCounts = 12;
-            const armAngle = initialAngle + pi2 / armCounts * Math.sin(pi2 * j / armLength)
+            const armAngle = initialAngle + pi2 / armCounts * Math.sin(pi2 * j / armLength);
 
             const currentStep = i * armLength + j;
             const ratio = currentStep / steps;
@@ -234,9 +279,7 @@ async function danmaku3() {
             for (let k = 0; k < armCounts; k++) {
                 if (gameover) return;
                 const angle = armAngle + pi2 * k / armCounts;
-                const dx = Math.cos(angle) * bulletSpeed * 0.8;
-                const dy = Math.sin(angle) * bulletSpeed * 0.8;
-                createBullet(dx, dy, color);
+                createBullet(bulletstartX, bulletstartY, angle, color);
             }
             await sleep(100);
         }
@@ -253,16 +296,15 @@ async function danmaku4() {
         const steps = 50;
         for (let j = 0; j < steps; j++) {
             const ratio = j / steps;
-            const sx = bulletstartX + ampritudeX * sin(pi2 * ratio);
-            const sy = bulletstartY - amplitudeY * sin(pi2 * ratio * 2)
-            const shotAngle = Math.atan2(heroY - sy, heroX - sx);
+            const x = bulletstartX + ampritudeX * sin(pi2 * ratio);
+            const y = bulletstartY - amplitudeY * sin(pi2 * ratio * 2)
+            const targetAngle = Math.atan2(heroY - y, heroX - x);
             const armCounts = 14;
             for (let k = 0; k < armCounts; k++) {
-                const angle = shotAngle + pi2 * k / armCounts;
-                const dx = cos(angle) * bulletSpeed * 0.8;
-                const dy = sin(angle) * bulletSpeed * 0.8;
+                if (gameover) return;
+                const angle = targetAngle + pi2 * k / armCounts;
                 const color = getRainbowCode(ratio);
-                createBullet(dx, dy, color, sx, sy);
+                createBullet(x, y, angle, color);
             }
             await sleep(200);
         }
@@ -278,30 +320,26 @@ async function danmaku5() {
         for (let j = 0; j < steps; j += 25) {
             const ratio = j / steps;
             //弾の発射位置はゲーム画面の外周から
-            let sx, sy;
+            let x, y;
             if (j < width) {
-                sx = j;
-                sy = 0;
+                x = j;
+                y = 0;
             } else if (j < width + height) {
-                sx = width;
-                sy = j - width;
+                x = width;
+                y = j - width;
             } else if (j < 2 * width + height) {
-                sx = steps - height - j;
-                sy = height;
+                x = steps - height - j;
+                y = height;
             } else {
-                sx = 0;
-                sy = steps - j;
+                x = 0;
+                y = steps - j;
             }
 
             //中心にある仮想の円周上を狙う
             const targetCirclelRadius = 20;
-            // const targetCirclelRadius = 50 * sin(pi2 * ratio);
             const targetX = width / 2 + targetCirclelRadius * cos(pi2 * ratio * j / steps);
             const targetY = height / 2 + targetCirclelRadius * sin(pi2 * ratio * j / steps);
-            const angle = Math.atan2(targetY - sy, targetX - sx);
-
-            const dx = cos(angle) * bulletSpeed * 2;
-            const dy = sin(angle) * bulletSpeed * 2;
+            const angle = Math.atan2(targetY - y, targetX - x);
             const color = getRainbowCode(ratio);
 
             const shotCount = 10;
@@ -310,8 +348,9 @@ async function danmaku5() {
 
             //その位置から遅延した弾を出す関数
             async function lateShot(shotCount) {
+                if (gameover) return;
                 for (let i = 0; i < shotCount; i++) {
-                    createBullet(dx, dy, color, sx, sy);
+                    createBullet(x, y, angle, color);
                     await sleep(250);
                 }
             }
@@ -320,60 +359,66 @@ async function danmaku5() {
     await sleep(4000);
 }
 
+function createBullet(x, y, angle, color) {
+    const bullet = new Bullet(x, y, angle, color);
+    container.appendChild(bullet.element);
+    bulletList.push(bullet);
+    return bullet;
+}
 
-function createBullet(dx, dy, color = '#fff', sx = bulletstartX, sy = bulletstartY) {
-    if (gameover) return;
-    const bulletElement = document.createElement("div");
-    bulletElement.classList.add('bullet');
-    bulletElement.style.left = `${sx}px`;
-    bulletElement.style.top = `${sy}px`;
-    bulletElement.style.backgroundColor = color;
+function createLaser(x, y, angle, color) {
+    const laser = new Laser(x, y, angle, color);
+    container.appendChild(laser.element);
+    laserList.push(laser);
+    return laser;
+}
 
-    bulletList.push({
-        x: sx,
-        y: sy,
-        dx, dy,
-        div: bulletElement,
-        available: true,
-    });
-    container.appendChild(bulletElement);
-};
+async function createMatter(x, y, radius, n) {
+    const matter = new Matter(x, y, radius, n);
+    container.appendChild(matter.element);
+    matterList.push(matter);
+    await sleep(100);
+    matter.element.style.opacity = 1;
+    return matter;
+}
 
 function updateBullet() {
-    bulletList.forEach(bullet => {
-        const { x, y, dx, dy, div } = bullet;
-        div.style.left = `${x - bulletSize / 2}px`;
-        div.style.top = `${y - bulletSize / 2}px`;
-        bullet.x += dx;
-        bullet.y += dy;
-        if (x < -bulletSize / 2 || x > width + bulletSize / 2 ||
-            y < -bulletSize / 2 || y > height + bulletSize / 2) {
-            bullet.available = false;
-            div.remove();
+    for (let i = 0; i < bulletList.length; i++) {
+        const bullet = bulletList[i];
+        bullet.update();
+        //画面外判定とスコアの加算
+        if (bullet.x < -bullet.size / 2 || bullet.x > width + bullet.size / 2 ||
+            bullet.y < -bullet.size / 2 || bullet.y > height + bullet.size / 2) {
+            bullet.delete();
             bulletBonus += 1;
         }
-        const dist = (heroX - x) ** 2 + (heroY - y) ** 2;
-        if (dist < (heroSize * 0.25) ** 2) {
+
+        if (islookMode) continue;
+        //自機との衝突判定
+        const dist = (heroX - bullet.x) ** 2 + (heroY - bullet.y) ** 2;
+        if (dist < ((heroSize / 2 + bullet.size / 2) * 0.44) ** 2) {
             gameover = true;
         }
-    });
+    }
+
 };
 
-
 function updateLaser() {
-    laserList.forEach(laser => {
+    for (let i = 0; i < laserList.length; i++) {
+        const laser = laserList[i];
         laser.update();
-        //画面外のレーザーを消す
-        if (laser.x < -laser.width / 2 || laser.x > laser.width / 2 + width ||
-            laser.y < -laser.width / 2 || laser.y > laser.width / 2 + height) {
-            laser.available = false;
+        //画面外判定
+        if (laser.x < -laser.length / 2 || laser.x > laser.length / 2 + width ||
+            laser.y < -laser.length / 2 || laser.y > laser.length / 2 + height) {
             laser.delete();
             laserBonus += 50;
         }
+
+        if (islookMode) continue;
         //レーザーと自機の当たり判定
         //レーザーの始点->終点のベクトルvec1
-        const vec1X = laser.width * cos(laser.angle);
-        const vec1Y = laser.width * sin(laser.angle);
+        const vec1X = laser.length * cos(laser.angle);
+        const vec1Y = laser.length * sin(laser.angle);
         //レーザーの始点->自機の中心のベクトルvec2
         const vec2X = heroX - (laser.x - vec1X / 2);
         const vec2Y = heroY - (laser.y - vec1Y / 2);
@@ -382,15 +427,16 @@ function updateLaser() {
         const vec3Y = heroY - (laser.y + vec1Y / 2);
 
         //レーザー直線と自機の最短距離 = ベクトルの外積 / レーザーの長さ
-        //正負が存在し、レーザーに対して自機がどちら側にいるかわかる
-        const dist = (vec1X * vec2Y - vec2X * vec1Y) / laser.width;
+        //正負が存在し、レーザーに対して自機がどちら側にいるかがわかる
+        const dist = (vec1X * vec2Y - vec2X * vec1Y) / laser.length;
         //レーザー直線と、始点・終点->自機の内積： 正負で角度がわかる
         const dotProduct1 = vec1X * vec2X + vec1Y * vec2Y;
         const dotProduct2 = vec1X * vec3X + vec1Y * vec3Y;
 
+        //以下すり抜け判定
         //すり抜け判定用フラグの更新
         laser.side = Math.sign(dist);
-        //vec2とvec3が（鋭角・鈍角）の組み合わせのとき(レーザーの横範囲内のとき)
+        //vec2とvec3が（鋭角・鈍角）の組み合わせのとき(レーザー始点・終点を通る2法線の内側にいるとき)
         if (dotProduct1 * dotProduct2 < 0) {
             //接触判定
             if (Math.abs(dist) < 3) {
@@ -402,13 +448,25 @@ function updateLaser() {
             }
         }
         laser.preside = laser.side;
-    });
-
+    }
 }
 
+function updateMatter() {
+    for (let i = 0; i < matterList.length; i++) {
+        const matter = matterList[i];
+        matter.update();
+        //自機との衝突判定
+        if (islookMode) continue;
+        const dist = (heroX - matter.x) ** 2 + (heroY - matter.y) ** 2;
+        if (dist < (matter.radius * 0.6) ** 2) {
+            gameover = true;
+        }
+    }
+};
+
 function eraseEnemy() {
-    bulletList = bulletList.filter(bullet => bullet.available);
-    laserList = laserList.filter(laser => laser.available);
+    bulletList = bulletList.filter(bullet => !bullet.modeList.includes('delete'));
+    laserList = laserList.filter(laser => !laser.modeList.includes('delete'));
 }
 
 function updateHero() {
@@ -419,6 +477,7 @@ function updateHero() {
 };
 
 function updateScore() {
+    if (islookMode) return;
     const now = Date.now();
     const timeBonus = Math.floor((now - startTime) * 0.01);
     score = bulletBonus + laserBonus + timeBonus;
@@ -448,7 +507,6 @@ function init() {
         originalY,
         originalheroX,
         originalheroY;
-
     $(container).on('mousedown touchstart', (e) => {
         e.preventDefault();
         if (e.touches) {
@@ -461,7 +519,6 @@ function init() {
         originalheroX = heroX;
         originalheroY = heroY;
     });
-
     $(document).on('mousemove touchmove', (e) => {
         if (gameover) return;
         if (originalX !== -1) {
@@ -477,9 +534,6 @@ function init() {
     });
     $(document).on('mouseup touchend', () => originalX = -1);
 
-    scoreElement.textContent = `SCORE: 0`;
-    updateRankingDOM();
-
     //ゲーム開始ボタン
     $(newGameBtn).on('click touchstart', async () => {
         if (newGameBtn.disabled) return;
@@ -490,30 +544,58 @@ function init() {
         async function animate() {
             if (gameover) {
                 cancelAnimationFrame(animationId);
-                bulletList.forEach(bullet => bullet.div.style.opacity = 0);
+                bulletList.forEach(bullet => bullet.element.style.opacity = 0);
                 laserList.forEach(laser => laser.element.style.opacity = 0);
-                recordNumber = await ajaxToPHP('insertRanking', { score });
-                await updateRankingDOM();
+                matterList.forEach(matter => matter.element.style.opacity = 0);
+                if (score !== 0) {
+                    recordNumber = await ajaxToPHP('insertRanking', { score });
+                    await updateRankingDOM();
+                }
+                $('#islookMode').prop('disabled', false);
                 newGameBtn.disabled = false;
                 return;
             }
             updateBullet();
             updateLaser();
+            updateMatter();
             eraseEnemy();
-            updateScore();
+            if (!islookMode) updateScore();
             requestAnimationFrame(animate);
         }
     });
+
+    //鑑賞モード切替
+    $('#islookMode').on('click', function (e) {
+        //ゲーム中に鑑賞モードには変更できない
+        if (!gameover && !islookMode) {
+            e.preventDefault();
+            return;
+        }
+        //鑑賞モードでのゲーム中に解除するとゲームリセット
+        if (!gameover && islookMode) {
+            gameover = true;
+        }
+        islookMode = $(this).prop('checked');
+    });
+    scoreElement.textContent = `SCORE: 0`;
+    updateRankingDOM();
 };
 
 function resetGame() {
     gameover = false;
     newGameBtn.disabled = true;
-
-    bulletList.forEach(bullet => bullet.div.remove());
+    if (!islookMode) {
+        $('#islookMode').prop('disabled', true);
+    }
+    //DOM整理
+    bulletList.forEach(bullet => bullet.element.remove());
     laserList.forEach(laser => laser.element.remove());
+    matterList.forEach(matter => matter.element.remove());
+
     bulletList = [];
     laserList = [];
+    matterList = [];
+
     score = 0;
     bulletBonus = 0;
     laserBonus = 0;
@@ -533,9 +615,9 @@ async function countDown() {
         countDown.style.top = bulletstartY - countDownSize / 2 + 'px';
         countDown.textContent = i;
 
-        await sleep(500);
+        await sleep(300);
         countDown.style.opacity = 0;
-        await sleep(500);
+        await sleep(700);
         countDown.remove();
     }
     startTime = Date.now();
