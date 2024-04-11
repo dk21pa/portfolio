@@ -346,9 +346,14 @@ h1 {
 	margin-bottom: 80px;
 }
 
+.gameDisplay p {
+	text-align: center;
+}
+
 #game {
 	max-width: 350px;
-	width: calc(100% - 20px);
+	/* width: calc(100% - 20px); */
+	margin: 20px auto;
 	min-width: 280px;
 	height: 500px;
 	background-color: #171717;
@@ -381,7 +386,7 @@ h1 {
 	position: absolute;
 	background-color: #fff;
 	border-radius: 50%;
-	transition: opacity 4s ease-in;
+	transition: opacity 3s ease-in;
 }
 
 #game .laser {
@@ -392,7 +397,13 @@ h1 {
 	left: 200px;
 	border-radius: 3px;
 	background-color: red;
-	transition: opacity 4s ease-in;
+	transition: opacity 3s ease-in;
+}
+
+#game .matter {
+	position: absolute;
+	opacity: 0;
+	transition: clip-path 2s, opacity 3s ease-in, background-color 2s;
 }
 
 #game .caution {
@@ -404,10 +415,10 @@ h1 {
 	border-radius: 50%;
 	border: 3px solid rgb(236, 88, 88);
 	transform: scale(0);
-	animation: caution linear;
+	animation: shrink linear;
 }
 
-@keyframes caution {
+@keyframes shrink {
 	0% {
 		transform: scale(1);
 	}
@@ -723,7 +734,7 @@ footer {
 
 	#game {
 		width: calc(100% - 20px);
-		margin: 0 auto;
+		margin: 0 auto 12px;
 	}
 
 	#game .countDown {
